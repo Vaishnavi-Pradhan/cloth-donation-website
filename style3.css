@@ -1,0 +1,109 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #4b0082; /* Dark purple background color */
+}
+
+/* Section Wrapper */
+#section-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Box Wrapper */
+.box-wrapper {
+    background-color: #fff; /* white background */
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* subtle box shadow */
+    padding: 20px;
+    width: 80%;
+    max-width: 500px;
+}
+
+.line {
+    border-top: 1px solid #ccc;
+    margin: 20px 0;
+}
+
+/* Title */
+.info-title {
+    color: #190faa; 
+    text-align: center;
+}
+
+/* Subtitle */
+.info-sub-title {
+    color: #524bbe; 
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Form Title */
+.form-title {
+    color: #333; /* dark gray */
+    text-align: center;
+}
+
+/* Form Fields */
+.form-fields {
+    margin-top: 20px;
+}
+
+
+/* Form Group */
+.form-group {
+    margin-bottom: 15px;
+}
+
+/* Text Input */
+input[type="text"],
+input[type="tel"],
+input[type="number"],
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc; /* light gray border */
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+/* Submit Button */
+.submit-button {
+    background-color: #007bff; /* blue */
+    color: #fff; /* white text */
+    border: none;
+    border-radius: 5px;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    display: block;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #0056b3; /* dark blue on hover */
+}
+
+/* Get NGOs Button */
+.get-ngos-button {
+    background-color: #28a745; /* green */
+    color: #fff; /* white text */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.get-ngos-button:hover {
+    background-color: #218838; /* darker green on hover */
+}

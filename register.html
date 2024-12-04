@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        window.onload = function() {
+            document.getElementById('signup-form').onsubmit = function() {
+                return validateForm();
+            };
+        };
+
+        function validateForm() {
+            var name = document.getElementById('name').value.trim();
+            var email = document.getElementById('email').value.trim();
+            var phone = document.getElementById('phone').value.trim();
+            var password = document.getElementById('password').value;
+
+            // Regular expressions for validation
+            var nameRegex = /^[a-zA-Z\s]+$/;
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            var phoneRegex = /^\d{10}$/;
+            var passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+            // Validation
+            if (!name.match(nameRegex)) {
+                alert('Please enter a valid name.');
+                return false;
+            }
+            if (!email.match(emailRegex)) {
+                alert('Please enter a valid email address.');
+                return false;
+            }
+            if (!phone.match(phoneRegex)) {
+                alert('Please enter a valid 10-digit phone number.');
+                return false;
+            }
+            if (!password.match(passwordRegex)) {
+                alert('Password must be at least 8 characters long and contain at least one digit, one lowercase and one uppercase letter.');
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="signup-box">
+          <h2 class="signup-title">Create Your Account</h2>
+          <form id="signup-form" action="connect.php" method="post">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" class="form-input" placeholder="Enter Name" name="Name" autocomplete="off">
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" class="form-input" placeholder="Enter Email" name="Email" autocomplete="off">
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" class="form-input" placeholder="Enter Phone Number" name="PhoneNo" autocomplete="off">
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" id="password" class="form-input" placeholder="Enter Password" name="Password" autocomplete="off">
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn">Sign Up</button>
+            </div>
+          </form>
+          <p class="login-link">Already have an account? <a href="login.html">Log in here</a></p>
+        </div>
+      </div>
+</body>
+</html>

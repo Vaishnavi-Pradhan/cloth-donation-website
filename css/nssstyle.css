@@ -1,0 +1,157 @@
+*{
+    margin:0;
+    border:0;
+    padding:0;
+    outline:0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing:border-box;
+}
+
+:root{
+    --color-primary:#6c63ff;
+    --color-success:#00bf8e;
+    --color-warning:#f7c94b;
+    --color-danger:#f75842;
+    --color-danger-variant:rgba(247,88,66,0.4);
+    --color-white:#fff;
+    --color-light:rgba(255,255,255,0.7);
+    --color-black:#000;
+    --color-bg:#1f2641;
+    --color-bg1:#2e3267;
+    --color-bg2:#424890;
+
+    --container-width-lg:80%;
+    --container-width-md:90%;
+    --container-width-sm:94%;
+    
+    --transition: all 400ms ease ;
+}
+
+.container{
+    width: var(--container-width-lg);
+    margin: 0 auto;
+}
+
+
+a{
+    color: var(--color-white); 
+    text-align: center;
+    justify-content:center;
+    font-size:large;
+    font-weight: bold;
+}
+
+nav{
+    background:transparent;
+    width:100vw;
+    height:4.5rem;
+    position: fixed;
+    top: 0; 
+    z-index: 11;
+}
+
+body{
+    font-family: "Montserrat", sans-serif;
+    line-height: 1.7;
+    color: var(--color-white);
+    background: #a0d2eb; 
+}
+.nav__container{
+    height:100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}  
+
+#navbar{
+    background-color:black;
+}
+.nav__menu{
+    display:flex;
+    align-items: center;
+    gap: 5rem;
+}
+
+.nav__menu a{
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.nav__menu a:hover{
+    color: var(--color-bg2);
+}
+
+
+.dropdown__menu{
+    display: none;
+  }
+  
+  .nav__container ul li:hover .dropdown__menu{
+      display:block;
+      position: absolute;
+      background-color: black;
+      width:130px;
+      padding: 1px;
+     
+  }
+  
+  .dropdown__menu ul{
+      display:block;
+      margin:10px;
+  }
+  
+  .dropdown__menu ul li{
+      width:150px;
+      padding:1px;
+  } 
+
+/* *{
+    background-color: white;
+} */
+
+#NSS{
+ margin-top:100px;
+}
+
+h1{
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    justify-content: center;
+}
+h2{
+    color: black;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+}
+p{
+    color: black;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+    font-size: large;
+}
+.image{
+    margin:0 65px;
+    display: inline-block;
+    /* padding: 0%; */
+    display:grid;
+    grid-template-columns: repeat(3,280px); 
+    grid-column-gap: 20px;
+    justify-content: center; /* Center horizontally */
+    align-items: center;
+}
+#pic{
+    margin: 0;
+    display: inline;
+   padding:0%;
+   /* display:flex; */
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr; 
+}
+
+
+
+

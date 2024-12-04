@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donation Form</title>
+    <link rel="stylesheet" href="style3.css">
+
+    <script>
+        window.onload = function() {
+            document.getElementById('donation').onsubmit = function(event) {
+                // Prevent the default form submission
+                event.preventDefault();
+                // Validate the form
+                if (validateForm()) {
+                    // If form is valid, get NGOs and submit form
+                    getNGOsAndSubmitForm();
+                }
+            };
+        };
+
+        function validateForm() {
+            var name = document.getElementById('name').value.trim();
+            var phone = document.getElementById('phone').value.trim();
+            var ngo = document.getElementById('ngo').value;
+            var address = document.getElementById('address').value;
+            var item = document.getElementById('item').value;
+
+            // Regular expressions for validation
+            var nameRegex = /^[a-zA-Z\s]+$/;
+            var phoneRegex = /^\d{10}$/;
+
+            // Validation
+            if (!name.match(nameRegex)) {
+                alert('Please enter a valid name.');
+                return false;
+            }
+            if (!phone.match(phoneRegex)) {
+                alert('Please enter a valid 10-digit phone number.');
+                return false;
+            }
+            if (address == "") {
+            alert('Please enter you address to pick up.');
+            return false;
+            }
+            if (ngo == "") {
+            alert('Please select NGO.');
+            return false;
+            }
+            if (item <= 0) {
+            alert('Please enter no. of items.');
+            return false;
+            }
+        
+            return true;
+        }
+
+        function getNGOsAndSubmitForm() {
+            var city = document.getElementById("city").value;
+
+            // Make AJAX request to PHP script
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    // Update HTML content with response from PHP script
+                    document.getElementById("ngo-list").innerHTML = this.responseText;
+                    // After the NGO list is populated, submit the form
+                    document.getElementById("donation").submit();
+                }
+            };
+            // Append city as a query parameter to the URL
+            var url = "get_ngos.php?city=" + encodeURIComponent(city);
+            xhttp.open("GET", url, true);
+            xhttp.send();
+        }
+
+    </script>
+</head>
+<body>
+    <section id="section-wrapper">
+        <div class="box-wrapper">
+            <div class="info-wrap">
+                <h1 class="info-title">Donate Now</h1>
+                <h3 class="info-sub-title">Cause your contribution can make a difference!</h3>
+            </div>
+
+            <div class="line"></div>
+            
+            <div class="form-wrap">
+                <form id="donation" action="donation.php" method="POST" onsubmit="return validateForm();">
+                    <h2 class="form-title" id="msg">Donation Details</h2>
+                    <div class="form-fields">
+                        <div class="form-group">
+                            <input type="text" class="fullname" id="name" placeholder="Full Name" name="FullName">
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" class="phone" id="phone" placeholder="Mobile No." name="MobileNo">
+                        </div>
+                        <div class="form-group">
+                            <input type="number" class="quantity" id="item" placeholder="Donation Item Quantity" name="Items">
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Pickup Address" id="address" name="Address"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="city">Select City:</label>
+                                <select id="city" name="City">
+                                    <option value="Mumbai" selected>Mumbai</option>
+                                    <option value="Thane">Thane</option>
+                                    <!-- Add more options as needed -->
+                                </select>
+                        </div>
+                        <div class="form-group">
+                             <button type="button" class="get-ngos-button" onclick="getNGOs()">Get NGOs</button>
+                        </div>
+
+                        <div id="ngo-list"></div>
+                        
+                         <script>
+                            function getNGOs() {
+                                var city = document.getElementById("city").value;
+
+                                // Make AJAX request to PHP script
+                                var xhttp = new XMLHttpRequest();
+                                xhttp.onreadystatechange = function() {
+                                    if (this.readyState == 4 && this.status == 200) {
+                                        // Update HTML content with response from PHP script
+                                        document.getElementById("ngo-list").innerHTML = this.responseText;
+                                    }
+                                };
+                                // Append city as a query parameter to the URL
+                                 var url = "get_ngos.php?city=" + encodeURIComponent(city);
+                                 xhttp.open("GET", url, true);
+                                 xhttp.send();
+                            }
+                        </script> 
+
+
+                    </div>
+                    <button type="submit" class="submit-button">Confirm Donation</button>
+                </form>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
